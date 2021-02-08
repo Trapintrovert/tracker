@@ -11,6 +11,7 @@ import TrackCreateScreen from './src/screen/TrackCreateScreen'
 import TrackDetailScreen from './src/screen/TrackDetailScreen'
 import TrackListScreen from './src/screen/TrackListScreen'
 import { Provider as AuthProvider} from './src/context/AuthContext'
+import { navigator } from './src/navigationRef'
 
 const Tab = createBottomTabNavigator();
 
@@ -49,7 +50,7 @@ function MainFlow() {
 export default function App (){
   return (
     <AuthProvider>
-      <NavigationContainer>
+      <NavigationContainer ref={navigator}>
         <Stack.Navigator>
           <Stack.Screen name="LoginFlow" component={LoginFlow} options={{ headerShown: false}} />
           <Stack.Screen name="MainFlow" component={MainFlow} options={{ headerShown: false}} />
