@@ -29,7 +29,7 @@ function LoginFlow () {
 function OtherTrackList(){
   return (
     <Stack.Navigator>
-      <Stack.Screen name="TrackList" component={TrackListScreen}  options={{  title: ""}}/>
+      <Stack.Screen name="TrackList" component={TrackListScreen}  options={{ headerShown: false}} />
       <Stack.Screen name="TrackDetail" component={TrackDetailScreen} options={{  title: ""}} />
     </Stack.Navigator>
   )
