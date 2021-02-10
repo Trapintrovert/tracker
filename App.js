@@ -12,6 +12,7 @@ import TrackDetailScreen from './src/screen/TrackDetailScreen'
 import TrackListScreen from './src/screen/TrackListScreen'
 import { Provider as AuthProvider} from './src/context/AuthContext'
 import { navigator } from './src/navigationRef'
+import ResolveAuthScreen from './src/screen/ResolveAuthScreen'
 
 const Tab = createBottomTabNavigator();
 
@@ -52,6 +53,7 @@ export default function App (){
     <AuthProvider>
       <NavigationContainer ref={navigator}>
         <Stack.Navigator>
+          <Stack.Screen name="ResolveAuth" component={ResolveAuthScreen} />
           <Stack.Screen name="LoginFlow" component={LoginFlow} options={{ headerShown: false}} />
           <Stack.Screen name="MainFlow" component={MainFlow} options={{ headerShown: false}} />
         </Stack.Navigator>      
