@@ -6,7 +6,7 @@ import Spacer from './Spacer'
 const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
     const [ email, setEmail ] = useState('')
     const [password, setPassword] = useState('')
-
+    console.log(errorMessage)
     return (
         <>
             <Spacer>
@@ -19,12 +19,7 @@ const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
                     autoCapitalize='none'
                     autoCorrect={false}
                 />
-                {
-                    errorMessage ? (
-                        <Text style={styles.errorMessage}>{errorMessage }</Text> 
-                        )
-                        : null
-                }
+               
                 <Spacer/>
                 <Input 
                     label="Password"
@@ -34,6 +29,13 @@ const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
                     autoCorrect={false}
                     secureTextEntry
                 />
+                {
+                    errorMessage ? (
+                        <Text style={styles.errorMessage}>{errorMessage }</Text> 
+                        ): null
+                        
+                }
+                
                 <Spacer>
                     <Button title={submitButtonText} onPress={() => onSubmit({ email, password })}/>
                 </Spacer>
