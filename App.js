@@ -10,7 +10,10 @@ import SignupScreen from './src/screen/SignupScreen'
 import TrackCreateScreen from './src/screen/TrackCreateScreen'
 import TrackDetailScreen from './src/screen/TrackDetailScreen'
 import TrackListScreen from './src/screen/TrackListScreen'
+
 import { Provider as AuthProvider} from './src/context/AuthContext'
+import { Provider as LocationProvider } from './src/context/LocationContext'
+
 import { navigator } from './src/navigationRef'
 import ResolveAuthScreen from './src/screen/ResolveAuthScreen'
 
@@ -50,14 +53,16 @@ function MainFlow() {
 
 export default function App (){
   return (
-    <AuthProvider>
-      <NavigationContainer ref={navigator}>
-        <Stack.Navigator>
-          <Stack.Screen name="ResolveAuth" component={ResolveAuthScreen} />
-          <Stack.Screen name="LoginFlow" component={LoginFlow} options={{ headerShown: false}} />
-          <Stack.Screen name="MainFlow" component={MainFlow} options={{ headerShown: false}} />
-        </Stack.Navigator>      
-      </NavigationContainer>
-    </AuthProvider>
+    <LocationProvider>
+      <AuthProvider>
+        <NavigationContainer ref={navigator}>
+          <Stack.Navigator>
+            <Stack.Screen name="ResolveAuth" component={ResolveAuthScreen} />
+            <Stack.Screen name="LoginFlow" component={LoginFlow} options={{ headerShown: false}} />
+            <Stack.Screen name="MainFlow" component={MainFlow} options={{ headerShown: false}} />
+          </Stack.Navigator>      
+        </NavigationContainer>
+      </AuthProvider>
+    </LocationProvider>
   )
 };
