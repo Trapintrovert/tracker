@@ -5,12 +5,13 @@ import { Text } from 'react-native-elements'
 import Map from '../component/Map';
 import { Context as LocationContext } from '../context/LocationContext';
 import useLocation from '../hooks/useLocation'
+import { withNavigationFocus } from '@react-navigation/compat'
 
-
-const TrackCreateScreen = () => {
+const TrackCreateScreen = ({ isFocused }) => {
     const { addLocation } = useContext(LocationContext)
 
-    const [err] = useLocation(addLocation)
+    const [err] = useLocation(isFocused, addLocation)
+
 
     return (
         <SafeAreaView forceInset={{top: 'always'}}>
@@ -23,7 +24,7 @@ const TrackCreateScreen = () => {
 
 const styles = StyleSheet.create({})
 
-export default TrackCreateScreen
+export default withNavigationFocus(TrackCreateScreen)
 
 
 
