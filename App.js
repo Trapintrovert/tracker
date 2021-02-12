@@ -13,6 +13,7 @@ import TrackListScreen from './src/screen/TrackListScreen'
 
 import { Provider as AuthProvider} from './src/context/AuthContext'
 import { Provider as LocationProvider } from './src/context/LocationContext'
+import { Provider as TrackProvider } from './src/context/TrackContext'
 
 import { navigator } from './src/navigationRef'
 import ResolveAuthScreen from './src/screen/ResolveAuthScreen'
@@ -53,16 +54,18 @@ function MainFlow() {
 
 export default function App (){
   return (
-    <LocationProvider>
-      <AuthProvider>
-        <NavigationContainer ref={navigator}>
-          <Stack.Navigator>
-            <Stack.Screen name="ResolveAuth" component={ResolveAuthScreen} />
-            <Stack.Screen name="LoginFlow" component={LoginFlow} options={{ headerShown: false}} />
-            <Stack.Screen name="MainFlow" component={MainFlow} options={{ headerShown: false}} />
-          </Stack.Navigator>      
-        </NavigationContainer>
-      </AuthProvider>
-    </LocationProvider>
+    <TrackProvider>
+      <LocationProvider>
+        <AuthProvider>
+          <NavigationContainer ref={navigator}>
+            <Stack.Navigator>
+              <Stack.Screen name="ResolveAuth" component={ResolveAuthScreen} />
+              <Stack.Screen name="LoginFlow" component={LoginFlow} options={{ headerShown: false}} />
+              <Stack.Screen name="MainFlow" component={MainFlow} options={{ headerShown: false}} />
+            </Stack.Navigator>      
+          </NavigationContainer>
+        </AuthProvider>
+      </LocationProvider>
+    </TrackProvider>
   )
 };
